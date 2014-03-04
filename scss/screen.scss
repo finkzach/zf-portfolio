@@ -1,0 +1,198 @@
+/*
+ * MIXINS
+ */
+
+/* Clearfix */
+@mixin clearfix($useOverflow: false) {
+  @if($useOverflow==false) {
+    &:after {
+        clear: both;
+        content: '';
+        display: table;
+    }
+  } @else {
+    display: block;
+    overflow: auto;
+  }
+}
+
+%clearfix {
+    @include clearfix;
+}
+
+/*
+ * VARIABLES
+ */
+
+/* Colors */
+$white: #fff;
+$black: #000;
+
+$grey-1: #474747;
+
+$red-1: #c54747;
+
+/*
+ * STYLES
+ */
+
+body {
+  font-family: 'Lato', Helvetica, Arial, Sans-Serif;
+  background: url('/img/specks.jpg');
+  font-color: $grey-1;
+  font-weight: 300;
+  margin: 0;
+  padding: 0; 
+}
+
+/* Navigation */
+nav {
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  background: $white;
+  border-bottom: .2em solid $red-1;
+  padding: 10px;
+  ul {
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 700px;
+    min-width: 250px;
+    list-style: none;
+    li { 
+      display: inline;
+      a {
+        text-decoration: none;
+        font-size: 1.7em;
+        font-weight: 300;
+        padding: 5px 15px;
+        color: $black;
+        &.nav-active {
+          color: $white;
+        }
+        &:hover {
+          text-decoration: none;
+          border-top: .2em solid $red-1; 
+        }
+      }
+    }
+  }
+}
+
+/* Main Region */
+.main {
+  max-width: 1280px;
+  min-width: 250px;
+  padding: 4.5em 0;
+  margin: 0 auto;
+  .logo {
+    width: 150px;
+    height: 120px;
+    margin: 0 auto;
+    display: block;
+    background: url('/img/logo.png') no-repeat;
+    background-size: 80% auto;
+  }
+
+  #intro {
+    position: relative;
+    width: 100%;
+    margin: 20px auto;
+    padding: 0;
+    border-bottom: .5em solid $grey-1;
+    h2 {
+      background-color: $white;
+      font-size: 3em;
+      text-align: center;
+      text-transform: capitalize;
+      line-height: 1em;
+      font-weight: 300;
+      margin: 5px 5px;
+      padding: 0;
+    }
+    p {
+      background-color: $white;
+      margin: 1em 10%;
+      padding: 0;
+      font-size: 1.8em;
+      line-height: 1.2em;
+    }
+  }
+
+  article.work, 
+  article.resume {
+    width: 100%;
+    border-bottom: .5em solid $grey-1;
+    margin: 20px auto;
+    padding: 0;
+    overflow: hidden;
+
+    h2 {
+      max-width: 640px;
+      min-width: 250px;
+      margin: 0;
+      padding: 10px;
+      background: $white;
+      border-bottom: .2em solid $grey-1;
+      text-transform: capitalize;
+      font-size: 2.8em;
+      font-weight: 300;
+    }
+
+    section {
+      @include clearfix;
+      padding: 0 0.5em;
+      h3 {
+        max-width: 640px;
+        min-width: 250px;
+        margin: 0;
+        color: $red-1;
+        font-size: 2.2em;
+        font-weight: 300;
+        padding-left: 10px;
+        border-bottom: .1em solid $red-1;
+      }
+      p {
+        background: $white;
+        font-size: 1.8em;
+        line-height: 1.2em;
+        font-color: $grey-1;
+      }
+      a {
+        text-decoration: none;
+        color: $black;
+        font-weight: 400;
+      }
+      .inline-image {
+        min-width: 250px;
+        max-width: 550px;
+        max-height: 350px;
+        overflow: hidden;
+        border: .3em solid $red-1;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .right {
+        float: right; 
+        margin: 0 0 5% 2%;
+      }
+      @media only screen and (max-width: 480px) {
+        .right {
+          float: none; 
+          margin: 5%;
+        }
+      }
+      .company {
+        font-weight: 400;
+        font-size: 1.2em;
+      }
+      .emphasis {
+        font-weight: 400;
+        font-size: 1em;
+      }
+    }
+  }
+}
