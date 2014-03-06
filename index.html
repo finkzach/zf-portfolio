@@ -12,17 +12,14 @@
 		<script type="text/javascript">
 			(function($){
 				$(document).ready(function(){
-
 					/* body scrolling */
 					$(document).on('click', 'nav a', function(event){
 						event.preventDefault ? event.preventDefault() : event.returnValue = false;
 						var hash = $(this).attr('href');
 						$('html, body').animate({scrollTop: $(hash).offset().top - 100}, 500);
 					});
-
 					/* venobox */
 					$('.venobox').venobox();
-
 					/* open content with custom settings */
 					$('.venobox_custom').venobox({
 						framewidth: '300px',
@@ -31,10 +28,8 @@
 						bordercolor: '#ba7c36',
 						numeratio: true
 					});
-
 					/* auto-open #firstlink on page load */
 					$("#firstlink").venobox().trigger('click');
-
 				});
 			})(jQuery);
 		</script>
